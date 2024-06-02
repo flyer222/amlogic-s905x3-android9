@@ -1,0 +1,3 @@
+add_lunch_combo x2_m401a-eng
+add_lunch_combo x2_m401a-user
+add_lunch_combo x2_m401a-userdebug

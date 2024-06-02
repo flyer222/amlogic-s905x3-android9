@@ -15,7 +15,7 @@ fi
 #Project Name             SOC Name                Hardware Name                  device/bananapi project name   uboot compile params                 tdk path
 project[1]="m5_mbox"      ;soc[1]="S905X3"        ;hardware[1]="BANANAPI_M5"     ;module[1]="m5_mbox"           ;uboot[1]="bananapi_m5_v1"           ;tdk[1]="g12a/bl32.img"
 project[2]="m5_tablet"    ;soc[2]="S905X3"        ;hardware[2]="BANANAPI_M5"     ;module[2]="m5_tablet"         ;uboot[2]="bananapi_m5_v1"           ;tdk[2]="g12a/bl32.img"
-
+project[3]="x2_m401a"    ;soc[3]="S905X2"        ;hardware[3]="flyer_x2"     ;module[3]="x2_m401a"         ;uboot[3]="bananapi_m5_v1"           ;tdk[3]="g12a/bl32.img"
 platform_avb_param=""
 platform_type=1
 project_path="null"
@@ -68,7 +68,7 @@ if [ $# -eq 1 ]; then
     || [ $1 == "vendorimage" ] \
     || [ $1 == "odm_image" ] \
     || [ $1 == "dtbimage" ] ; then
-        make $1 -j20
+        make $1 -j32
         exit
     fi
 fi
@@ -77,6 +77,6 @@ cd bootloader/uboot-repo
 compile_uboot
 
 cd ../../
-make otapackage -j20
+make otapackage -j32
 
 
