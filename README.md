@@ -25,6 +25,21 @@ Because github limit 100MB size for single file, please download the [oversize f
 
 Another way is get the source code tar archive from [BaiduPan(pincode: 8888)](https://pan.baidu.com/s/1TmmR_075b49lPSt1Phq0ag?pwd=8888) or [GoogleDrive](https://drive.google.com/drive/folders/1RuvazYcr46HKMvNBxSqQftdyWa0tK9f7?usp=share_link)
 
+
+
+already download this files .and split this files to 50M  and upload to this resp.
+
+cd build/large_single_files
+
+cat android_github_oversize_files.zip_0*   >> android_github_oversize_files.zip
+
+md5sum  android_github_oversize_files.zip 
+a0b9e47a480bb797228e32971e695349  android_github_oversize_files.zip
+
+override  zipfiles to android root dirctory.
+
+
+
 ----------
 
 **Build**
