@@ -33,7 +33,7 @@ endif
 endif
 
 $(call inherit-product, device/bananapi/$(PRODUCT_DIR)/vendor_prop.mk)
-$(call inherit-product, device/bananapi/common/products/tv/product_tv.mk)
+$(call inherit-product, device/bananapi/common/products/mbox/product_mbox.mk)
 $(call inherit-product, device/bananapi/$(PRODUCT_DIR)/device.mk)
 $(call inherit-product-if-exists, vendor/google/products/gms.mk)
 #########################################################################
@@ -542,7 +542,8 @@ endif
 #########################################################################
 PRODUCT_PACKAGES += \
 	MboxLauncher \
-	LeanKeyKeyboardPro   
+	LeanKeyKeyboardPro  \
+	TvSettings
 #########################################################################
 #
 #                            factory test
