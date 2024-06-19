@@ -58,7 +58,7 @@ else
 -include device/bananapi/common/tuner/tuner_modules.mk
 #KERNEL_DEVICETREE := sm1_s905x3_bananapi_m5 sm1_s905x3_bananapi_m2_pro
 #KERNEL_DEFCONFIG := meson64_defconfig
-KERNEL_DEVICETREE := g12a_s905x2_m401
+KERNEL_DEVICETREE := g12a_s905x2_m401a
 KERNEL_DEFCONFIG := meson64_defconfig
 
 KERNEL_ARCH := arm64
