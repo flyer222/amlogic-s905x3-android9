@@ -64,6 +64,7 @@ KERNEL_DEFCONFIG := meson64_defconfig
 KERNEL_ARCH := arm64
 
 #DTBO_DEVICETREE := android_p_overlay_dt wifi_bt_rtl8822cs i2c2 i2c3 sdio uart1 uart1_cts_rts uart2 hifi_pcm5122
+DTBO_DEVICETREE := android_p_overlay_dt
 
 KERNEL_OUT := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ
 
