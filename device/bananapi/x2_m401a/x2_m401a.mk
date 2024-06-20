@@ -78,9 +78,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_NAME := x2_m401a
 PRODUCT_DEVICE := x2_m401a
-PRODUCT_BRAND := bpi
+PRODUCT_BRAND := XingYi_x2
 PRODUCT_MODEL := x2_m401a
-PRODUCT_MANUFACTURER := Sinovoip
+PRODUCT_MANUFACTURER := XingYi
 
 TARGET_KERNEL_BUILT_FROM_SOURCE := true
 
@@ -540,10 +540,11 @@ endif
 #                            apps
 #
 #########################################################################
+include device/bananapi/x2_m401a/xingyi.mk
 PRODUCT_PACKAGES += \
-	MboxLauncher \
 	LeanKeyKeyboardPro  \
-	TvSettings
+	TvSettings  \
+	DangBeiLauncher
 #########################################################################
 #
 #                            factory test
