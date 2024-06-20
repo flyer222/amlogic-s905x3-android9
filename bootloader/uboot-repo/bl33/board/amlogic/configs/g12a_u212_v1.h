@@ -43,7 +43,7 @@
 
 /* configs for CEC */
 #define CONFIG_CEC_OSD_NAME		"AML_TV"
-#define CONFIG_CEC_WAKEUP
+/*#define CONFIG_CEC_WAKEUP*/
 /*if use bt-wakeup,open it*/
 #define CONFIG_BT_WAKEUP
 /* SMP Definitinos */
@@ -91,15 +91,17 @@
         "jtag=disable\0"\
         "loadaddr=3080000\0"\
         "panel_type=lcd_1\0" \
-	"lcd_ctrl=0x00000000\0" \
-	"outputmode=1080p60hz\0" \
+        "lcd_ctrl=0x00000000\0" \
+        "outputmode=1080p60hz\0" \
         "hdmimode=1080p60hz\0" \
-	"colorattribute=444,8bit\0"\
+        "nativeui=enable\0" \
+        "is.bestmode=true\0" \
+        "colorattribute=444,8bit\0"\
         "cvbsmode=576cvbs\0" \
         "display_width=1920\0" \
         "display_height=1080\0" \
-        "display_bpp=16\0" \
-        "display_color_index=16\0" \
+        "display_bpp=24\0" \
+        "display_color_index=24\0" \
         "display_layer=osd0\0" \
         "display_color_fg=0xffff\0" \
         "display_color_bg=0\0" \
@@ -114,14 +116,16 @@
         "dolby_status=0\0" \
         "dolby_vision_on=0\0" \
         "usb_burning=update 1000\0" \
-        "otg_device=1\0"\
+        "otg_device=0\0"\
         "fdt_high=0x20000000\0"\
         "try_auto_burn=update 700 750;\0"\
         "sdcburncfg=aml_sdc_burn.ini\0"\
+        "boot_scripts=boot.ini\0"\
         "sdc_burning=sdc_burn ${sdcburncfg}\0"\
+        "rom_sdboot=reboot sdboot\0"\
         "wipe_data=successful\0"\
         "wipe_cache=successful\0"\
-        "EnableSelinux=enforcing\0" \
+        "EnableSelinux=permissive\0" \
         "recovery_part=recovery\0"\
         "lock=10001000\0"\
         "recovery_offset=0\0"\
@@ -144,12 +148,13 @@
             "\0"\
         "storeargs="\
 		"get_bootloaderversion;" \
-		"setenv bootargs ${initargs} hdr_policy=${hdr_policy} hdr_priority=${hdr_priority} otg_device=${otg_device} reboot_mode_android=${reboot_mode_android} logo=${display_layer},loaded,${fb_addr} fb_width=${fb_width} fb_height=${fb_height} display_bpp=${display_bpp} outputmode=${outputmode} vout=${outputmode},enable panel_type=${panel_type} lcd_ctrl=${lcd_ctrl} hdmitx=${cecconfig},${colorattribute} hdmimode=${hdmimode} hdmichecksum=${hdmichecksum} dolby_vision_on=${dolby_vision_on} frac_rate_policy=${frac_rate_policy} hdmi_read_edid=${hdmi_read_edid} cvbsmode=${cvbsmode} osd_reverse=${osd_reverse} video_reverse=${video_reverse} irq_check_en=${Irq_check_en}  androidboot.selinux=${EnableSelinux} androidboot.firstboot=${firstboot} jtag=${jtag}; "\
+		"setenv bootargs ${initargs} hdr_policy=${hdr_policy} hdr_priority=${hdr_priority} otg_device=${otg_device} reboot_mode_android=${reboot_mode_android} logo=${display_layer},loaded,${fb_addr} fb_width=${fb_width} fb_height=${fb_height} display_bpp=${display_bpp} outputmode=${outputmode} vout=${outputmode},enable panel_type=${panel_type} lcd_ctrl=${lcd_ctrl} hdmitx=${cecconfig},${colorattribute} hdmimode=${hdmimode} modeline=${modeline} nativeui=${nativeui}  hdmichecksum=${hdmichecksum} dolby_vision_on=${dolby_vision_on} frac_rate_policy=${frac_rate_policy} hdmi_read_edid=${hdmi_read_edid} cvbsmode=${cvbsmode} osd_reverse=${osd_reverse} video_reverse=${video_reverse} irq_check_en=${Irq_check_en}  androidboot.selinux=${EnableSelinux} androidboot.firstboot=${firstboot} jtag=${jtag}; "\
 	"setenv bootargs ${bootargs} androidboot.hardware=amlogic androidboot.bootloader=${bootloader_version} androidboot.build.expect.baseband=N/A;"\
             "run cmdline_keys;"\
             "\0"\
         "switch_bootmode="\
             "get_rebootmode;"\
+            "echo reboot mode: ${reboot_mode};"\
             "if test ${reboot_mode} = factory_reset; then "\
                     "setenv reboot_mode_android ""normal"";"\
                     "run storeargs;"\
@@ -223,6 +228,15 @@
                 "fi;"\
                 "run recovery_from_flash;"\
             "fi; \0" \
+         "boot_from_sd_udisk="\
+            "echo BPI: try boot from sd/udisk;"\
+            "if mmcinfo; then "\
+                "run boot_from_sdcard;"\
+            "fi;"\
+            "if usb start 0; then "\
+                "run boot_from_udisk;"\
+            "fi;"\
+            "\0"\
          "update="\
             /*first usb burning, second sdc_burn, third ext-sd autoscr/recovery, last udisk autoscr/recovery*/\
             "run usb_burning; "\
@@ -234,6 +248,14 @@
                 "run recovery_from_udisk;"\
             "fi;"\
             "run recovery_from_flash;"\
+            "\0"\
+        "boot_from_sdcard="\
+            "echo BPI: try boot from sdcard;"\
+            "if fatload mmc 0 ${loadaddr} ${boot_scripts}; then source ${loadaddr}; fi;"\
+            "\0"\
+        "boot_from_udisk="\
+            "echo BPI: try boot from udisk;"\
+            "if fatload usb 0 ${loadaddr} ${boot_scripts}; then source ${loadaddr}; fi;"\
             "\0"\
         "recovery_from_sdcard="\
             "if fatload mmc 0 ${loadaddr} aml_autoscript; then autoscr ${loadaddr}; fi;"\
@@ -255,14 +277,14 @@
             "get_valid_slot;"\
             "echo active_slot: ${active_slot};"\
             "if test ${active_slot} = normal; then "\
-                "setenv bootargs ${bootargs} ${fs_type} aml_dt=${aml_dt} recovery_part={recovery_part} recovery_offset={recovery_offset};"\
+                "setenv bootargs ${bootargs} ${fs_type} aml_dt=${aml_dt} recovery_part={recovery_part} recovery_offset={recovery_offset} androidboot.selinux=permissive;"\
                 "if itest ${upgrade_step} == 3; then "\
                     "if ext4load mmc 1:2 ${dtb_mem_addr} /recovery/dtb.img; then echo cache dtb.img loaded; fi;"\
                     "if ext4load mmc 1:2 ${loadaddr} /recovery/recovery.img; then echo cache recovery.img loaded; wipeisb; bootm ${loadaddr}; fi;"\
                 "else fi;"\
                 "if imgread kernel ${recovery_part} ${loadaddr} ${recovery_offset}; then wipeisb; bootm ${loadaddr}; fi;"\
             "else "\
-                "setenv bootargs ${bootargs} ${fs_type} aml_dt=${aml_dt} recovery_part=${boot_part} recovery_offset=${recovery_offset};"\
+                "setenv bootargs ${bootargs} ${fs_type} aml_dt=${aml_dt} recovery_part=${boot_part} recovery_offset=${recovery_offset} androidboot.selinux=permissive;"\
                 "if imgread kernel ${boot_part} ${loadaddr}; then bootm ${loadaddr}; fi;"\
             "fi;"\
             "\0"\
@@ -282,7 +304,7 @@
             "else "\
                 "setenv reboot_mode_android ""normal"";"\
                 "run storeargs;"\
-                "hdmitx hpd;hdmitx get_preferred_mode;hdmitx get_parse_edid;dovi process;osd open;osd clear;imgread pic logo bootup $loadaddr;bmp display $bootup_offset;bmp scale;vout output ${outputmode};dovi set;dovi pkg;vpp hdrpkt;"\
+                "hdmitx hpd;hdmitx get_preferred_mode;hdmitx get_parse_edid;hdmitx edid;dovi process;osd open;osd clear;imgread pic logo bootup $loadaddr;bmp display $bootup_offset;bmp scale;vout output ${outputmode};dovi set;dovi pkg;vpp hdrpkt;"\
             "fi;fi;"\
             "\0"\
         "cmdline_keys="\
@@ -305,13 +327,22 @@
                 "else "\
                     "setenv bootargs ${bootargs} androidboot.oem.key1=ATV00104319;"\
                 "fi;"\
+                "if keyman read dtbo ${loadaddr} str; then "\
+                    "setenv bootargs ${bootargs} androidboot.dtbo_idx=${dtbo};"\
+                    "setenv androidboot.dtbo_idx ${dtbo};"\
+                "fi;"\
             "fi;"\
             "\0"\
         "bcb_cmd="\
             "get_avb_mode;"\
             "get_valid_slot;"\
             "\0"\
-        "upgrade_key="\
+        "rom_sdboot_key="\
+            "if gpio input GPIOAO_3; then "\
+                "echo detect rom_sdboot key; run rom_sdboot;"\
+            "fi;"\
+            "\0"\
+	"upgrade_key="\
             "if gpio input GPIOAO_3; then "\
                 "echo detect upgrade key; run update;"\
             "fi;"\
@@ -329,6 +360,7 @@
 
 #define CONFIG_PREBOOT  \
             "run bcb_cmd; "\
+            "run boot_from_sd_udisk;"\
             "run factory_reset_poweroff_protect;"\
             "run upgrade_check;"\
             "run init_display;"\
@@ -619,6 +651,11 @@
 #define CONFIG_CMD_JTAG	1
 #define CONFIG_CMD_AUTOSCRIPT 1
 #define CONFIG_CMD_MISC 1
+#define CONFIG_CMD_SOURCE 1
+
+/* Compression commands */
+#define CONFIG_CMD_UNZIP 1
+#define CONFIG_LZMA	1
 
 /*file system*/
 #define CONFIG_DOS_PARTITION 1
@@ -689,8 +726,8 @@
 
 /* Choose One of Ethernet Type */
 #undef CONFIG_ETHERNET_NONE
-#define ETHERNET_INTERNAL_PHY
 #undef ETHERNET_EXTERNAL_PHY
+#define ETHERNET_INTERNAL_PHY
 
 #define CONFIG_HIGH_TEMP_COOL 90
 #endif

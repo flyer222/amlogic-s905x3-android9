@@ -1,8 +1,6 @@
-#uboot_name=g12a_u212_v1
-#project_path=x2_m401a
-
-uboot_name=bananapi_m5_v1
+uboot_name=g12a_u212_v1
 project_path=x2_m401a
+
 ./mk $uboot_name --systemroot;
 
 cp build/u-boot.bin ../../device/bananapi/$project_path/bootloader.img;
