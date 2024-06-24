@@ -207,15 +207,6 @@ config HID_PRODIKEYS
 	  multimedia keyboard, but will lack support for the musical keyboard
 	  and some additional multimedia keys.
 
-config HID_DIA_REMOTE
-	tristate "Dialog audio and motion remote control support"
-	depends on HID
-	---help---
-	Support for Dialog audio and motion remote control.
-	Say Y here to enable support for this device.
-	- Enable dialog BT remote
-	  Enable dialog BT audio device for voice search
-
 config HID_CMEDIA
 	tristate "CMedia CM6533 HID audio jack controls"
 	depends on HID
