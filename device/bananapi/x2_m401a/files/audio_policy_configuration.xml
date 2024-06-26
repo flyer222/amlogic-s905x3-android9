@@ -75,7 +75,11 @@
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                         samplingRates="48000"
                         channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                </mixPort>
+	    	</mixPort>
+		<mixPort name="ble_in" role="sink"  flags="AUDIO_OUTPUT_FLAG_DIRECT">
+            	     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                    	 samplingRates="16000" channelMasks="AUDIO_CHANNEL_IN_MONO"/>
+       		 </mixPort>
             </mixPorts>
             <devicePorts>
                 <!-- Output devices declaration, i.e. Sink DEVICE PORT -->
@@ -142,6 +146,10 @@
                 <devicePort tagName="BT SCO Headset Mic" type="AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET" role="source">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_IN_MONO"/>
+	    	</devicePort>
+	    	<devicePort tagName="BLE-In" type="AUDIO_DEVICE_IN_BLUETOOTH_BLE" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="16000" channelMasks="AUDIO_CHANNEL_IN_MONO"/>
                 </devicePort>
             </devicePorts>
             <!-- route declaration, i.e. list all available sources for a given sink -->
@@ -166,6 +174,9 @@
                        sources="primary output,tunnel a2dp,mmap_no_irq_out"/>
                 <route type="mix" sink="BT A2DP Speaker"
                        sources="primary output,tunnel a2dp,mmap_no_irq_out"/>
+		<route type="mix" sink="ble_in"
+               		sources="BLE-In"/>
+
             </routes>
 
         </module>
