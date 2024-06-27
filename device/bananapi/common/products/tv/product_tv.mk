@@ -192,6 +192,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
         media.omx.display_mode=1
 
 #TV project, need use 8 ch 32 bit output.
-TARGET_WITH_TV_AUDIO_MODE := true
+#TARGET_WITH_TV_AUDIO_MODE := true
 
 BOARD_HAVE_CEC_HIDL_SERVICE := true
