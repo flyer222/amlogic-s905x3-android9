@@ -479,7 +479,8 @@ public class OutputUiManager {
         String strEdid = mOutputModeManager.getHdmiSupportList();
         String strVesaEdid = null;
         String Edid = null;
-        if (Build.MODEL.equals("m5_tablet") || Build.MODEL.equals("m5_mbox")) {
+        if (Build.MODEL.equals("m5_tablet") || Build.MODEL.equals("m5_mbox")
+		|| Build.MODEL.equals("x2_m401a") || Build.MODEL.equals("x2_m401a_atv")) {
             strVesaEdid = mOutputModeManager.getHdmiVesaSupportList();
             Edid = strEdid.concat(strVesaEdid);
         } else {
