@@ -1,0 +1,1 @@
+add_lunch_combo x2_e900v22c-userdebug
