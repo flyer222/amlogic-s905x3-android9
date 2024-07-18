@@ -1,5 +1,5 @@
 uboot_name=g12a_u212_v1
-project_path=x2_m401a
+project_path=$TARGET_PRODUCT
 
 ./mk $uboot_name --systemroot;
 
