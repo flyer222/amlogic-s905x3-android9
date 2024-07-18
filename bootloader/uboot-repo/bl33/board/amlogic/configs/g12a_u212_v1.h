@@ -94,7 +94,7 @@
         "lcd_ctrl=0x00000000\0" \
         "outputmode=1080p60hz\0" \
         "hdmimode=1080p60hz\0" \
-        "nativeui=enable\0" \
+        "nativeui=disabled\0" \
         "is.bestmode=true\0" \
         "colorattribute=444,8bit\0"\
         "cvbsmode=576cvbs\0" \
