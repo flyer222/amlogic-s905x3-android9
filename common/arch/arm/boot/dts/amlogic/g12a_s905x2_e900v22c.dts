@@ -222,6 +222,7 @@
 		dev_name = "bt-dev";
 		status = "okay";
 		gpio_reset = <&gpio       GPIOX_17       GPIO_ACTIVE_HIGH>;
+		//gpio_en = <&gpio       GPIOX_17       GPIO_ACTIVE_HIGH>;
 		gpio_hostwake = <&gpio       GPIOX_19       GPIO_ACTIVE_HIGH>;
 	};
 
@@ -229,8 +230,10 @@
 		compatible = "amlogic, aml_wifi";
 		dev_name = "aml_wifi";
 		status = "okay";
-		interrupt_pin = <&gpio       GPIOX_7       GPIO_ACTIVE_HIGH>;
-		irq_trigger_type = "GPIO_IRQ_LOW";
+		interrupt_pin = <&gpio       GPIOX_18       GPIO_ACTIVE_HIGH>;
+		irq_trigger_type = "GPIO_IRQ_HIGH";
+		//interrupt_pin = <&gpio       GPIOX_7       GPIO_ACTIVE_HIGH>;
+		//irq_trigger_type = "GPIO_IRQ_LOW";
 		power_on_pin = <&gpio       GPIOX_6       GPIO_ACTIVE_HIGH>;
 		dhd_static_buf;	//if use bcm wifi, config dhd_static_buf
 		pinctrl-names = "default";
@@ -1437,7 +1440,7 @@
 };
 
 &sd_emmc_b2 {
-	status = "disabled";
+	status = "okay";
 	sd {
 		caps = "MMC_CAP_4_BIT_DATA",
 			 "MMC_CAP_MMC_HIGHSPEED",
@@ -1459,7 +1462,7 @@
 			 "MMC_CAP_SDIO_IRQ";
 
 		f_min = <400000>;
-		f_max = <200000000>;
+		f_max = <160000000>;
 	};
 };
 
@@ -1477,7 +1480,7 @@
 			 "MMC_PM_KEEP_POWER",
 			 "MMC_CAP_SDIO_IRQ";
 		f_min = <400000>;
-		f_max = <200000000>;
+		f_max = <160000000>;
 	};
 };
 

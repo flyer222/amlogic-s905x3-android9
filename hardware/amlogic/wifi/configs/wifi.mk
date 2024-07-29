@@ -1038,6 +1038,55 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 
+################################################################################## uwe5621ds
+ifeq ($(WIFI_MODULE),uwe5621ds)
+
+
+WIFI_KO := sprdwl_ng
+WIFI_DRIVER             := sprdwl_ng
+BOARD_WIFI_VENDOR       := realtek
+
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_rtl
+
+
+BOARD_WLAN_DEVICE := bcmdhd
+LIB_WIFI_HAL := libwifi-hal-bcm
+
+PRODUCT_PROPERTY_OVERRIDES += \
+        persist.sys.wifi.name=uwe5621ds
+
+PRODUCT_PACKAGES += \
+        p2p_supplicant.conf
+
+PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml
+
+PRODUCT_COPY_FILES += hardware/wifi/uwe/drivers/uwe5621ds/configs/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf
+PRODUCT_COPY_FILES += hardware/wifi/uwe/drivers/uwe5621ds/configs/bcm_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/bcm_supplicant_overlay.conf
+PRODUCT_COPY_FILES += hardware/wifi/uwe/drivers/uwe5621ds/configs/p2p_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant.conf
+
+PRODUCT_COPY_FILES += hardware/amlogic/wifi/configs/init_rc/init.amlogic.wifi_buildin_uwe5621.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.amlogic.wifi.rc
+PRODUCT_COPY_FILES += hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550001_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550001_2ant.ini \
+	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550001_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550001_3ant.ini \
+	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550002_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550002_2ant.ini \
+	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550002_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550002_3ant.ini \
+	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550003_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550003_2ant.ini \
+	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550003_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550003_3ant.ini \
+	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_56630000_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630000_2ant.ini \
+	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_56630000_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630000_3ant.ini \
+	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_56630001_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630001_2ant.ini \
+	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_56630001_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630001_3ant.ini 
+
+PRODUCT_PROPERTY_OVERRIDES += \
+        wifi.interface=wlan0
+
+endif
+
+
+
 ################################################################################## qualcomm wifi
 ifneq ($(filter qca6174 qca9377 qca9379,$(WIFI_MODULE)),)
 WIFI_KO := $(patsubst qca%,%,$(WIFI_MODULE))

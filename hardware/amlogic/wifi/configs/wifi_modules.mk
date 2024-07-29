@@ -40,6 +40,14 @@ DEFAULT_WIFI_KERNEL_MODULES := \
 
 endif
 
+######################################################################################## unisoc uwe5621
+ifneq ($(filter uwe5621ds,$(WIFI_MODULE)),)
+DEFAULT_WIFI_KERNEL_MODULES := \
+	$(PRODUCT_OUT)/obj/lib_vendor/uwe5621_bsp_sdio.ko \
+	$(PRODUCT_OUT)/obj/lib_vendor/sprdwl_ng.ko \
+
+endif
+
 ######################################################################################## multiwifi
 ifeq ($(WIFI_MODULE),multiwifi)
 DEFAULT_WIFI_KERNEL_MODULES := \
@@ -68,5 +76,7 @@ DEFAULT_WIFI_KERNEL_MODULES := \
 	$(PRODUCT_OUT)/obj/lib_vendor/ssv6x5x.ko \
 	$(PRODUCT_OUT)/obj/lib_vendor/ssv6051.ko \
 	$(PRODUCT_OUT)/obj/lib_vendor/ssv_hwif_ctrl.ko \
+	$(PRODUCT_OUT)/obj/lib_vendor/uwe5621_bsp_sdio.ko \
+	$(PRODUCT_OUT)/obj/lib_vendor/sprdwl_ng.ko \
 
 endif

@@ -269,7 +269,7 @@ endif
 #
 #########################################################################
 
-WIFI_MODULE := multiwifi
+WIFI_MODULE := uwe5621ds
 #WIFI_BUILD_IN := true
 include hardware/amlogic/wifi/configs/wifi.mk
 

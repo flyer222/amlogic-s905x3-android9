@@ -160,6 +160,11 @@ qca9377:
 qca6174:
 	$(MAKE) -C $(shell pwd)/hardware/wifi/qualcomm/drivers/qca6174/AIO/build KERNELPATH=$(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE)
 	cp $(shell pwd)/hardware/wifi/qualcomm/drivers/qca6174/AIO/rootfs-x86-android.build/lib/modules/wlan.ko $(TARGET_OUT)/wlan_6174.ko
+uwe5621ds:
+	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ  M=$(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocwcn ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE)  CFG_AML_WIFI_DEVICE_UWE5621=y
+	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ  M=$(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocwifi ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE)  CFG_AML_WIFI_DEVICE_UWE5621=y
+	cp $(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocwcn/uwe5621_bsp_sdio.ko  $(TARGET_OUT)/
+	cp $(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocwifi/sprdwl_ng.ko  $(TARGET_OUT)/
 multiwifi:
 	@echo "make wifi module KERNEL_ARCH is $(KERNEL_ARCH)"
 	mkdir -p $(TARGET_OUT)/
@@ -228,3 +233,7 @@ multiwifi:
 #	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ M=$(shell pwd)/hardware/wifi/atbm/atbm602x ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE) modules
 #	cp $(shell pwd)/hardware/wifi/atbm/atbm602x/hal_apollo/atbm602x_usb.ko $(TARGET_OUT)/
 #	$(CROSS_COMPILE)strip --strip-debug $(TARGET_OUT)/atbm602x_usb.ko
+	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ  M=$(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocwcn ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE)  CFG_AML_WIFI_DEVICE_UWE5621=y
+	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ  M=$(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocwifi ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE)  CFG_AML_WIFI_DEVICE_UWE5621=y
+	cp $(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocwcn/uwe5621_bsp_sdio.ko  $(TARGET_OUT)/
+	cp $(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocwifi/sprdwl_ng.ko  $(TARGET_OUT)/

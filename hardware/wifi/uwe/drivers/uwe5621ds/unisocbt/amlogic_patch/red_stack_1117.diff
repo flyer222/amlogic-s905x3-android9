@@ -1,0 +1,62 @@
+diff --git a/btm_ble_bgconn.cc b/btm_ble_bgconn.cc
+index 25d3c4a..fc12a5c 100644
+--- a/btm_ble_bgconn.cc
++++ b/btm_ble_bgconn.cc
+@@ -384,6 +384,8 @@ static int  get_sysfs_str(const char *path, char *valstr, int size)
+     return 0;
+ }
+  
++extern uint8_t connect_para; //add disconnct event flag  0x11:reson=0x16
++
+ void btm_send_hci_create_connection(
+     uint16_t scan_int, uint16_t scan_win, uint8_t init_filter_policy,
+     uint8_t addr_type_peer, const RawAddress& bda_peer, uint8_t addr_type_own,
+@@ -403,9 +405,10 @@ void btm_send_hci_create_connection(
+     // TODO(jpawlowski): tune parameters for different transports
+     for (int i = 0; i < phy_cnt; i++) {
+       ret=get_sysfs_str("/sys/bus/mmc/devices/sdio:8800/sdio:8800:1/device", val, sizeof(val));
+-      if((0==ret) && (!strcmp(val, "0x0000"))){
++      if( (0x22==connect_para)&&(0==ret) && (!strcmp(val, "0x0000"))){    //add unisoc
+           phy_cfg[i].scan_int = 64;
+           phy_cfg[i].scan_win = 48;
++	     // connect_para =0x11;  //add
+       }else{
+           phy_cfg[i].scan_int = scan_int;
+           phy_cfg[i].scan_win = scan_win;
+@@ -483,7 +486,6 @@ bool btm_ble_start_auto_conn(bool start) {
+         peer_addr_type |= BLE_ADDR_TYPE_ID_BIT;
+       }
+ #endif
+-
+       btm_send_hci_create_connection(
+           scan_int,                       /* uint16_t scan_int      */
+           scan_win,                       /* uint16_t scan_win      */
+diff --git a/btu_hcif.cc b/btu_hcif.cc
+index eac71a6..31210f0 100644
+--- a/btu_hcif.cc
++++ b/btu_hcif.cc
+@@ -649,6 +649,7 @@ static void btu_hcif_connection_request_evt(uint8_t* p) {
+  * Returns          void
+  *
+  ******************************************************************************/
++ uint8_t connect_para=0x11; ////add disconnct event flag  0x11:reson=0x16
+ static void btu_hcif_disconnection_comp_evt(uint8_t* p) {
+   uint16_t handle;
+   uint8_t reason;
+@@ -656,7 +657,16 @@ static void btu_hcif_disconnection_comp_evt(uint8_t* p) {
+   ++p;
+   STREAM_TO_UINT16(handle, p);
+   STREAM_TO_UINT8(reason, p);
++ //add unisoc  start
++  if ( 0x13 == reason) //remote dis
++  {
++    connect_para=0x22;
+ 
++  }
++  else
++  {
++    connect_para=0x11;
++  }                                      //add unisoc  stop
+   handle = HCID_GET_HANDLE(handle);
+ 
+   if ((reason != HCI_ERR_CONN_CAUSE_LOCAL_HOST) &&
