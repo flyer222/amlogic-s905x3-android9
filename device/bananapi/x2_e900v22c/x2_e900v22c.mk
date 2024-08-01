@@ -543,7 +543,8 @@ include device/bananapi/$(PRODUCT_DIR)/xingyi.mk
 PRODUCT_PACKAGES += \
 	LeanKeyKeyboardPro  \
 	TvSettings  \
-	DangBeiLauncher
+	DangBeiLauncher \
+	RemoteIME
 #########################################################################
 #
 #                            factory test
