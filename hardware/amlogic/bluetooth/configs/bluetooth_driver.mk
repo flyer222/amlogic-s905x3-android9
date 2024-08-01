@@ -40,6 +40,12 @@ define mtk-sdio-bt
 	cp $(shell pwd)/hardware/amlogic/bluetooth/mtk/mtkbt/bt_driver_sdio/btmtksdio.ko $(TARGET_OUT)/
 endef
 
+define unisoc-sdio-bt
+	@echo "inferface is sdio"
+	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ  M=$(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocbt/tty-sdio ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE)  CFG_AML_WIFI_DEVICE_UWE5621=y
+	cp $(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocbt/tty-sdio/sprdbt_tty.ko  $(TARGET_OUT)/
+endef
+
 endif
 
 
@@ -62,3 +68,7 @@ MTKBT:
 	@echo "mtk bt configured"
 	$(mtk-sdio-bt)
 	$(mtk-usb-bt)
+
+UNISOC_BT:
+	@echo "unisoc bt configured"
+	$(unisoc-sdio-bt)

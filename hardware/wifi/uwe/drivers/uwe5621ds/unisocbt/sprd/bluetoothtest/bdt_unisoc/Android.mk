@@ -5,7 +5,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES:=     \
     bdt_unisoc.c
 
-LOCAL_C_INCLUDES := hardware/sprd/bluetoothtest/btsuite/main/include
+LOCAL_C_INCLUDES := hardware/wifi/uwe/drivers/uwe5621ds/unisocbt/sprd/bluetoothtest/btsuite/main/include
 
 LOCAL_MODULE:= bdt_unisoc
 LOCAL_MODULE_CLASS := EXECUTABLES

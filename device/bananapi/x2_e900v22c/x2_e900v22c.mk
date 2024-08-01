@@ -281,8 +281,8 @@ include hardware/amlogic/wifi/configs/wifi.mk
 #########################################################################
 
 BOARD_HAVE_BLUETOOTH := true
-BLUETOOTH_MODULE := RTKBT
-BLUETOOTH_INF := USB
+BLUETOOTH_MODULE := UNISOC_BT
+BLUETOOTH_INF := SDIO
 include hardware/amlogic/bluetooth/configs/bluetooth.mk
 
 #########################################################################

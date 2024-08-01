@@ -25,4 +25,8 @@ ifeq ($(BLUETOOTH_MODULE), MTKBT)
 	BOARD_VENDOR_KERNEL_MODULES += $(PRODUCT_OUT)/obj/lib_vendor/btmtksdio.ko
 endif
 
+ifeq ($(BLUETOOTH_MODULE), UNISOC_BT)
+	BOARD_VENDOR_KERNEL_MODULES += $(PRODUCT_OUT)/obj/lib_vendor/sprdbt_tty.ko
+endif
+
 endif

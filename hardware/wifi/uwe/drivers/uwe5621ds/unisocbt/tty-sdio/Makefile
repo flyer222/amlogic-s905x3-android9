@@ -4,10 +4,10 @@
 PWD := $(shell pwd)
 CURFOLDER ?= $(pwd)
 
-ccflags-y += -I$(srctree)/drivers/net/wireless/uwe5622/sprdwcn/include
 ccflags-y += -I$(CURFOLDER)/include
 #ccflags-y += -DUSE_DTS
 ccflags-y +=  -Wno-uninitialized
+ccflags-y += -I$(KERNEL_SRC)/$(M)/../../unisocwcn/include/
 
 ifneq ($(UNISOC_BSP_INCLUDE),)
 ccflags-y += -I$(UNISOC_BSP_INCLUDE)

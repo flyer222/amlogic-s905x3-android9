@@ -15,7 +15,8 @@ LOCAL_SRC_FILES := \
         src/conf.c \
         src/sitm.c \
         conf/sprd/$(SPRD_WCNBT_CHISET)/src/$(SPRD_WCNBT_CHISET).c \
-        src/bt_vendor_sprd_hci.c
+        src/bt_vendor_sprd_hci.c \
+        src/FallthroughBTA.cpp
 
 LOCAL_C_INCLUDES += \
         $(LOCAL_PATH)/include \
@@ -44,6 +45,7 @@ LOCAL_C_INCLUDES += $(LOCAL_ALGO_C_INCLUDES)
 
 LOCAL_SHARED_LIBRARIES := \
         libcutils \
+        libutils \
         liblog
 
 LOCAL_HEADER_LIBRARIES:= libbluetooth_headers

@@ -138,7 +138,7 @@ static int init_rfkill()
     char path[64];
     char buf[16];
     int fd, sz, id;
-    const char *basepath = "/sys/devices/platform/mtty/rfkill";
+    const char *basepath = "/sys/devices/platform/mtty.0/rfkill";
 
     DIR *d;
     struct dirent *de;
