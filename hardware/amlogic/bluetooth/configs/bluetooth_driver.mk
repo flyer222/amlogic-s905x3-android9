@@ -42,8 +42,8 @@ endef
 
 define unisoc-sdio-bt
 	@echo "inferface is sdio"
-	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ  M=$(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocbt/tty-sdio ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE)  CFG_AML_WIFI_DEVICE_UWE5621=y
-	cp $(shell pwd)/hardware/wifi/uwe/drivers/uwe5621ds/unisocbt/tty-sdio/sprdbt_tty.ko  $(TARGET_OUT)/
+	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ  M=$(shell pwd)/hardware/wifi/unisoc/uwe5621ds/BT/tty-sdio ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE)  CFG_AML_WIFI_DEVICE_UWE5621=y
+	cp $(shell pwd)/hardware/wifi/unisoc/uwe5621ds/BT/tty-sdio/sprdbt_tty.ko  $(TARGET_OUT)/
 endef
 
 endif

@@ -1064,21 +1064,23 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml
 
-PRODUCT_COPY_FILES += hardware/wifi/uwe/drivers/uwe5621ds/configs/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf
-PRODUCT_COPY_FILES += hardware/wifi/uwe/drivers/uwe5621ds/configs/bcm_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/bcm_supplicant_overlay.conf
-PRODUCT_COPY_FILES += hardware/wifi/uwe/drivers/uwe5621ds/configs/p2p_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant.conf
-
 PRODUCT_COPY_FILES += hardware/amlogic/wifi/configs/init_rc/init.amlogic.wifi_buildin_uwe5621.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.amlogic.wifi.rc
-PRODUCT_COPY_FILES += hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550001_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550001_2ant.ini \
-	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550001_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550001_3ant.ini \
-	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550002_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550002_2ant.ini \
-	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550002_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550002_3ant.ini \
-	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550003_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550003_2ant.ini \
-	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_23550003_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550003_3ant.ini \
-	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_56630000_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630000_2ant.ini \
-	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_56630000_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630000_3ant.ini \
-	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_56630001_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630001_2ant.ini \
-	hardware/wifi/uwe/drivers/uwe5621ds/configs/wifi_56630001_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630001_3ant.ini 
+
+
+PRODUCT_COPY_FILES += hardware/wifi/unisoc/uwe5621ds/configs/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf
+PRODUCT_COPY_FILES += hardware/wifi/unisoc/uwe5621ds/configs/wifi/bcm_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/bcm_supplicant_overlay.conf
+PRODUCT_COPY_FILES += hardware/wifi/unisoc/uwe5621ds/configs/wifi/p2p_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant.conf
+
+PRODUCT_COPY_FILES += hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_23550001_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550001_2ant.ini \
+	hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_23550001_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550001_3ant.ini \
+	hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_23550002_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550002_2ant.ini \
+	hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_23550002_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550002_3ant.ini \
+	hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_23550003_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550003_2ant.ini \
+	hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_23550003_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_23550003_3ant.ini \
+	hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_56630000_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630000_2ant.ini \
+	hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_56630000_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630000_3ant.ini \
+	hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_56630001_2ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630001_2ant.ini \
+	hardware/wifi/unisoc/uwe5621ds/configs/wifi/wifi_56630001_3ant.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/uwe5621/wifi_56630001_3ant.ini
 
 PRODUCT_PROPERTY_OVERRIDES += \
         wifi.interface=wlan0

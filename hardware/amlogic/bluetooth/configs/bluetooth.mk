@@ -152,7 +152,7 @@ ifeq ($(BLUETOOTH_MODULE), UNISOC_BT)
 
 PRODUCT_PACKAGES += libbt-vendor 
 
-$(call inherit-product, hardware/wifi/uwe/drivers/uwe5621ds/unisocbt/sprd/libbt/unisocbt.mk)
+$(call inherit-product, hardware/wifi/unisoc/uwe5621ds/BT/unisocbt.mk)
 
 $(shell sed -i "1a\    insmod \/vendor\/lib/modules\/sprdbt_tty.ko" hardware/amlogic/bluetooth/configs/init_rc/init.amlogic.bluetooth.rc)
 endif
