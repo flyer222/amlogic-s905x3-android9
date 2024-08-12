@@ -31,7 +31,7 @@ already download this files .and split this files to 50M  and upload to this res
 
 cd build/large_single_files
 
-cat android_github_oversize_files.zip_0*   >> android_github_oversize_files.zip
+cat android_github_oversize_files.zip_*   >> android_github_oversize_files.zip
 
 md5sum  android_github_oversize_files.zip 
 a0b9e47a480bb797228e32971e695349  android_github_oversize_files.zip

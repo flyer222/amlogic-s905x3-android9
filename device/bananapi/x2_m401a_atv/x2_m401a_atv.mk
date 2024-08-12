@@ -203,6 +203,17 @@ DONT_DEXPREOPT_PREBUILTS:= true
 endif
 ########################################################################
 
+
+########################################################################
+#
+#                           opengapps
+#
+GAPPS_VARIANT := tvstock
+#GAPPS_FORCE_PACKAGE_OVERRIDES := true
+########################################################################
+
+
+
 ########################################################################
 #
 #                           Tuner
@@ -561,4 +572,8 @@ PRODUCT_PACKAGES += AndroidStressTest
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	sys.test.producttest=true
+endif
+
+ifeq ($(TARGET_BUILD_GOOGLE_ATV),true)
+$(call inherit-product-if-exists, vendor/opengapps/build/opengapps-packages.mk)
 endif
