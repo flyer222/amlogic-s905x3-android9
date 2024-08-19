@@ -209,6 +209,7 @@ endif
 #                           opengapps
 #
 GAPPS_VARIANT := tvstock
+GAPPS_PRODUCT_PACKAGES += Chrome
 #GAPPS_FORCE_PACKAGE_OVERRIDES := true
 ########################################################################
 
@@ -555,7 +556,7 @@ include device/bananapi/$(PRODUCT_DIR)/xingyi.mk
 PRODUCT_PACKAGES += \
 	LeanKeyKeyboardPro  \
 	TvSettings  \
-	DangBeiLauncher
+	DangBeiLauncher_simple
 #########################################################################
 #
 #                            factory test
