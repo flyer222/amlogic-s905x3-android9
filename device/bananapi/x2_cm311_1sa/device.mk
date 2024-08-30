@@ -101,8 +101,29 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_CHARACTERISTICS := mbx,nosdcard
 
 ifneq ($(TARGET_BUILD_GOOGLE_ATV), true)
+PRODUCT_CHARACTERISTICS := mbx,nosdcard
 DEVICE_PACKAGE_OVERLAYS := \
     device/bananapi/$(PRODUCT_DIR)/overlay
+else
+PRODUCT_CHARACTERISTICS := tv
+endif
+PRODUCT_TAGS += dalvik.gc.type-precise
+
+
+# setup dalvik vm configs.
+$(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
+
+
+
+#To remove healthd from the build
+PRODUCT_PACKAGES += android.hardware.health@2.0-service.override
+DEVICE_FRAMEWORK_MANIFEST_FILE += \
+	system/libhidl/vintfdata/manifest_healthd_exclude.xml
+
+#To keep healthd in the build
+PRODUCT_PACKAGES += android.hardware.health@2.0-service
+
+#PRODUCT_COPY_FILES += \
 endif
 PRODUCT_TAGS += dalvik.gc.type-precise
 
