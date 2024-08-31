@@ -571,7 +571,7 @@ endif
 #                           opengapps
 #
 #GAPPS_VARIANT := tvmini
-GAPPS_VARIANT := tvstock
+#GAPPS_VARIANT := tvstock
 #GAPPS_EXCLUDED_PACKAGES += SetupWraithPrebuilt
 #GAPPS_FORCE_PACKAGE_OVERRIDES := true
 #PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -582,5 +582,5 @@ GAPPS_VARIANT := tvstock
 
 ifeq ($(TARGET_BUILD_GOOGLE_ATV),true)
 #$(call inherit-product-if-exists, vendor/opengapps/build/opengapps-packages.mk)
-#$(call inherit-product-if-exists, vendor/xingyi/atv/google/gms_tv/gms_tv.mk)
+#$(call inherit-product-if-exists, vendor/xingyi/gms_tv/gms_tv.mk)
 endif
