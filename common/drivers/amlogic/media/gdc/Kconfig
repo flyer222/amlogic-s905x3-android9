@@ -1,8 +1,0 @@
-#
-# gdc driver configuration
-#
-config AMLOGIC_MEDIA_GDC
-	bool "Amlogic gdc driver"
-	default n
-	help
-		Select to enable gdc driver.
