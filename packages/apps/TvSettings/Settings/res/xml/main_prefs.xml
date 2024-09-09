@@ -41,7 +41,12 @@
             android:icon="@drawable/ic_device_prefs"
             android:key="device_pref"
             android:title="@string/device_pref_category_title"
-            android:fragment="com.android.tv.settings.device.DevicePrefFragment" />
+		android:fragment="com.android.tv.settings.device.DevicePrefFragment" />
+		<Preference
+            android:icon="@drawable/ic_adv_settings"
+            android:title="@string/header_category_adv_settings"
+            android:key="sbx_settings"
+            android:fragment="com.android.tv.settings.advtv_settings.AdvtvSettingsFragment"/>
         <Preference
             android:icon="@drawable/ic_remotes_and_accessories"
             android:key="remotes_and_accessories"

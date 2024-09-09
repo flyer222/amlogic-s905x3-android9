@@ -290,6 +290,10 @@
     <string name="system_autofill">Autofill</string>
     <!-- Preference which manages home screen settings. [CHAR LIMIT=50] -->
     <string name="system_home">Home screen</string>
+    <string name="home">Settings Home</string>
+    <string name="home_app_uninstall_button">Uninstall this application</string>
+    <string name="home_settings">Home App</string>
+
     <!-- Preference which manages search and google now settings. [CHAR LIMIT=50] -->
     <string name="system_search">Search</string>
     <!-- Preference which manages google and assistant settings. [CHAR LIMIT=50] -->
@@ -312,6 +316,8 @@
     <string name="accessibility_none">None</string>
     <!-- Preference which manages Diagnostic and Usage reporting -->
     <string name="system_diagnostic">Usage &amp; Diagnostics</string>
+     <!-- Home settings screen, text indicating that a launcer does not support work profiles [CHAR LIMIT=100] -->
+    <string name="home_work_profile_not_supported">Doesn\u2019t support work profiles</string>
 
     <!-- About -->
     <skip />
@@ -1646,4 +1652,11 @@
 
     <!-- concat two strings, e.g. "Android Keyboard, My Pass" [CHAR LIMIT=NONE] -->
     <string name="string_concat"><xliff:g id="part1">%1s</xliff:g>, <xliff:g id="part2">%2s</xliff:g></string>
+	
+	
+	
+	
+	<string name="header_category_adv_settings">Advance Tv Settings</string>
+	
+	
 </resources>

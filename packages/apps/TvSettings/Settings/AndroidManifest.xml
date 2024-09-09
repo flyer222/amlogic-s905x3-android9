@@ -448,6 +448,13 @@
             android:configChanges="keyboard|keyboardHidden|navigation"
             android:excludeFromRecents="true"
             android:exported="true" />
+
+	<activity
+            android:name=".system.HomeSettingsActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation"
+            android:excludeFromRecents="true"
+            android:exported="true" />
+
         <activity
             android:name=".accessories.BluetoothAccessoryActivity"
             android:theme="@style/Theme.Settings.Transparent"

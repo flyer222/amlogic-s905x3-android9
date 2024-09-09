@@ -141,6 +141,10 @@
     <declare-styleable name="LeanbackPickerDialogPreference">
         <!-- The type of this picker preference: can be either 'date' or 'time' -->
         <attr name="pickerType" format="string" />
-    </declare-styleable>
+     </declare-styleable>
+
+     <declare-styleable name="Preference">
+        <attr name="keywords" format="string" />
+     </declare-styleable>
 
 </resources>
