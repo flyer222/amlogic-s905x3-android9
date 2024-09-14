@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/device_displaymode"
+    android:key="resolution_list">
+    <SwitchPreference
+        android:key="show_all_resolution"
+        android:persistent="true"
+        android:title="@string/show_all_resolution"/>
+</PreferenceScreen>

@@ -7,20 +7,24 @@
         android:title="@string/sbxtv_project"
         android:key="sbxtv"
         android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.Project"/>
+		-->	
     <Preference
         android:icon="@drawable/ic_Interface"
         android:title="@string/interface_title"
-        android:key="sbx_user_scripts"
-        android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.Interface"/>
+        android:key="adv_user_scripts"
+        android:fragment="com.android.tv.settings.advtv_settings.settings_fragment.UIInterface"/>
+ <!--   
     <Preference
         android:icon="@drawable/ic_language"
         android:title="@string/internet_title"
         android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.Internet"/>
+		-->	
     <Preference
         android:icon="@drawable/ic_settings_root_on"
-        android:title="@string/sbx_settings_root"
+        android:title="@string/adv_settings_root"
         android:key="root"
-        android:fragment="com.android.tv.settings.sbxtv_settings.root.RootFragment"/>
+        android:fragment="com.android.tv.settings.advtv_settings.root.RootFragment"/>
+ <!--   
     <Preference
         android:icon="@drawable/ic_system_bars"
         android:title="@string/system_bars_title"
@@ -42,11 +46,13 @@
         android:title="@string/sleep_timer"
         android:key="powersettings"
         android:fragment="com.android.tv.settings.device.power.PowerSettingsFragment"/>
+		-->	
     <Preference
         android:icon="@drawable/ic_mouse"
         android:title="@string/system_mouse"
         android:key="mouse"
         android:fragment="com.android.tv.settings.inputmethod.MouseFragment"/>
+	 <!-- 		
     <Preference
         android:icon="@drawable/ic_mic_on"
         android:title="@string/abc_searchview_description_voice"

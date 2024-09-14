@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/interface_title">
+    <Preference
+        android:title="@string/screen_density"
+        android:key="screen_density"
+        android:fragment="com.android.tv.settings.advtv_settings.screen.DensityFragment"/>
+<!--		
+    <Preference
+        android:title="@string/device_fontsize"
+        android:key="font"
+        android:fragment="com.android.tv.settings.sbxtv_settings.Font.FontFragment"/>
+    <Preference
+        android:title="@string/animations_settings"
+        android:key="animations"
+        android:fragment="com.android.tv.settings.sbxtv_settings.Animations.AnimationsFragment"/>
+    <Preference
+        android:title="@string/theme_chooser"
+        android:key="theme_chooser"
+        android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.Theme"/>	  -->
+    <Preference
+        android:title="@string/bootvideo_chooser"
+        android:key="bootvideo_chooser"
+        android:fragment="com.android.tv.settings.advtv_settings.settings_fragment.BootVideo"/>
+    <Preference
+        android:title="@string/bootanimation_chooser"
+        android:key="bootanimation_chooser"
+	android:fragment="com.android.tv.settings.advtv_settings.settings_fragment.BootAnimation"/>
+    <Preference
+        android:title="@string/logo_chooser"
+        android:key="logo_chooser"
+        android:fragment="com.android.tv.settings.advtv_settings.settings_fragment.Logo"/>
+    <!--
+    <Preference
+        android:title="@string/icontvsettings_chooser"
+        android:key="icontvsettings_chooser"
+        android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.IconTvSettings"/>
+    <Preference
+        android:title="@string/icon_shape_chooser"
+        android:key="icon_shape_chooser"
+        android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.IconShape"/>
+    <Preference
+        android:title="@string/cursor_chooser"
+        android:key="cursor_chooser"
+        android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.MouseCursor"/>
+    <Preference
+        android:title="@string/tv_wall_chooser"
+        android:key="tv_wall_chooser"
+        android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.TVWall"/>
+    <Preference
+        android:title="@string/font_chooser"
+        android:key="font_chooser"
+        android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.Font"/>
+    <Preference
+        android:title="@string/toast_frame_chooser"
+        android:key="toast_chooser"
+        android:fragment="com.android.tv.settings.sbxtv_settings.SettingsFragment.ToastFrame"/>
+	-->
+</PreferenceScreen>

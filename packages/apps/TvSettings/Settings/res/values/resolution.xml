@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="resolutions">
+        <item>autodetect</item>
+        <item>2160p60hz</item>
+        <item>2160p50hz</item>
+        <item>2160p30hz</item>
+        <item>2160p25hz</item>
+        <item>2160p24hz</item>
+        <item>smpte24hz</item>
+        <item>1080p60hz</item>
+        <item>1080i60hz</item>
+        <item>1080p50hz</item>
+        <item>1080i50hz</item>
+        <item>1080p24hz</item>
+        <item>720p60hz</item>
+        <item>720p50hz</item>
+        <item>576p50hz</item>
+        <item>576i50hz</item>
+        <item>480p60hz</item>
+        <item>480i60hz</item>
+        <item>ODROID-VU8</item>
+        <item>ODROID-VU7A Plus</item>
+        <item>ODROID-VU7 Plus</item>
+        <item>ODROID-VU5A</item>
+        <item>ODROID-VU5/7</item>
+        <item>3440x1440p60hz</item>
+        <item>2560x1600p60hz</item>
+        <item>2560x1440p60hz</item>
+        <item>2560x1080p60hz</item>
+        <item>1920x1200p60hz</item>
+        <item>1680x1050p60hz</item>
+        <item>1600x1200p60hz</item>
+        <item>1600x900p60hz</item>
+        <item>1440x900p60hz</item>
+        <item>1360x768p60hz</item>
+        <item>1280x1024p60hz</item>
+        <item>1280x800p60hz</item>
+        <item>1024x768p60hz</item>
+        <item>1024x600p60hz</item>
+        <item>800x600p60hz</item>
+        <item>800x480p60hz</item>
+        <item>640x480p60hz</item>
+        <item>480x320p60hz</item>
+    </string-array>
+</resources>

@@ -17,6 +17,7 @@
 
     <color name="normal">#FFFFFFFF</color>
     <color name="background">#FF707070</color>
+	<color name="quiet">#FF909090</color>
     <color name="legacy_app_item_background">#1a000000</color>
     <color name="settings_background">#FF1F292E</color>
     <color name="settings_category_text_color">#FF51AAFF</color>
