@@ -74,4 +74,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml
 endif
 
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/bananapi/common/prebuilt_overlay,/product/overlay)
+
 $(call inherit-product-if-exists, external/hyphenation-patterns/patterns.mk)
