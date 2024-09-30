@@ -1,0 +1,286 @@
+package com.android.tv.settings.advtv_settings.SambaServer;
+
+import android.R;
+import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.storage.StorageEventListener;
+import android.os.storage.StorageManager;
+import android.os.storage.VolumeInfo;
+import android.os.storage.VolumeRecord;
+import android.provider.Settings;
+import android.support.v7.preference.CheckBoxPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
+import android.text.TextUtils;
+import android.ugoos.samba.SambaManager;
+import com.android.tv.settings.SettingsPreferenceFragment;
+import java.io.File;
+
+/* loaded from: classes.dex */
+public class SambaServerFragment extends SettingsPreferenceFragment {
+    private Context mContext;
+    private IntentFilter mIntentFilter;
+    private PreferenceCategory mShareCategory;
+    private CheckBoxPreference mSmbCheckBox;
+    SambaManager mSmbManager;
+    private Preference mSmbNbName;
+    private CheckBoxPreference mSmbOpen;
+    private Preference mSmbPassword;
+    private CheckBoxPreference mSmbShareInternal;
+    private CheckBoxPreference mSmbShareRoot;
+    private Preference mSmbUser;
+    private Preference mSmbWorkgroup;
+    StorageManager mStorageManager;
+    private ContentResolver resolver;
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() { 
+        @Override // android.content.BroadcastReceiver
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals("android.ethernet.SAMBA_STATE_CHANGED")) {
+                int intExtra = intent.getIntExtra("samba_state", 0);
+                if (intExtra == 3) {
+                    SambaServerFragment.this.mSmbCheckBox.setEnabled(false);
+                    return;
+                } else if (intExtra == 4) {
+                    SambaServerFragment.this.mSmbCheckBox.setEnabled(true);
+                    return;
+                }
+            }
+            SambaServerFragment.this.updateCheckbox();
+            SambaServerFragment.this.updateInfo();
+        }
+    };
+    private final StorageEventListener mStorageListener = new StorageEventListener() {
+        public void onVolumeStateChanged(VolumeInfo volumeInfo, int i, int i2) {
+            if (SambaServerFragment.isInteresting(volumeInfo)) {
+                SambaServerFragment.this.updateCheckbox();
+                SambaServerFragment.this.updateInfo();
+            }
+        }
+    };
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static boolean isInteresting(VolumeInfo volumeInfo) {
+        switch (volumeInfo.getType()) {
+            case 0:
+            case 1:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private boolean isRooted() {
+        return new File("/system/xbin/daemonsu").exists();
+    }
+
+    public static SambaServerFragment newInstance() {
+        return new SambaServerFragment();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateCheckbox() {
+        if (this.mSmbCheckBox == null) {
+            this.mSmbCheckBox = (CheckBoxPreference) findPreference("samba_enable");
+        }
+        if (this.mSmbManager == null) {
+            this.mSmbCheckBox.setChecked(false);
+        } else {
+            this.mSmbCheckBox.setChecked(this.mSmbManager.getSambaState() == 1);
+        }
+        this.mSmbCheckBox.setEnabled(true);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateInfo() {
+        if (this.mSmbUser == null) {
+            this.mSmbUser = findPreference("samba_user");
+        }
+        String string = Settings.System.getString(this.resolver, "samba_user");
+        if (string != null) {
+            this.mSmbUser.setSummary(string);
+        }
+        if (this.mSmbPassword == null) {
+            this.mSmbPassword = findPreference("samba_password");
+        }
+        String string2 = Settings.System.getString(this.resolver, "samba_password");
+        if (string2 != null) {
+            this.mSmbPassword.setSummary(string2);
+        }
+        if (this.mSmbWorkgroup == null) {
+            this.mSmbWorkgroup = findPreference("samba_workgroup");
+        }
+        String string3 = Settings.System.getString(this.resolver, "samba_workgroup");
+        if (string3 != null) {
+            this.mSmbWorkgroup.setSummary(string3);
+        }
+        if (this.mSmbNbName == null) {
+            this.mSmbNbName = findPreference("samba_netbios");
+        }
+        String string4 = Settings.System.getString(this.resolver, "samba_netbios");
+        if (string4 != null) {
+            this.mSmbNbName.setSummary(string4);
+        }
+        if (this.mSmbShareInternal == null) {
+            this.mSmbShareInternal = (CheckBoxPreference) findPreference("samba_share_internal");
+        }
+        boolean z = false;
+        this.mSmbShareInternal.setChecked(Settings.System.getInt(this.resolver, "samba_share_internal", 0) == 1);
+        this.mSmbShareInternal.setSummary(Environment.getExternalStorageDirectory().getPath());
+        if (this.mSmbShareRoot == null) {
+            this.mSmbShareRoot = (CheckBoxPreference) findPreference("samba_share_root");
+        }
+        this.mSmbShareRoot.setChecked(Settings.System.getInt(this.resolver, "samba_share_root", 0) == 1);
+        if (this.mSmbOpen == null) {
+            this.mSmbOpen = (CheckBoxPreference) findPreference("samba_open");
+        }
+        boolean z2 = Settings.System.getInt(this.resolver, "samba_open", 0) == 1;
+        this.mSmbOpen.setChecked(z2);
+        this.mShareCategory.removeAll();
+        for (VolumeInfo volumeInfo : this.mStorageManager.getVolumes()) {
+            File path = volumeInfo.getPath();
+            if (path != null) {
+                String str = null;
+                if (!TextUtils.isEmpty(volumeInfo.fsUuid)) {
+                    VolumeRecord findRecordByUuid = this.mStorageManager.findRecordByUuid(volumeInfo.fsUuid);
+                    str = (findRecordByUuid == null || TextUtils.isEmpty(findRecordByUuid.nickname)) ? volumeInfo.fsUuid : findRecordByUuid.nickname;
+                }
+                if (!TextUtils.isEmpty(volumeInfo.getDescription())) {
+                    str = volumeInfo.getDescription();
+                }
+                if (str != null && !str.equals(getString(R.string.permlab_manageFace))) {
+                    CheckBoxPreference checkBoxPreference = new CheckBoxPreference(this.mContext);
+                    checkBoxPreference.setPersistent(false);
+                    checkBoxPreference.setTitle(str);
+                    checkBoxPreference.setSummary(path.getPath());
+                    checkBoxPreference.setChecked(this.mSmbManager.checkStorage(path.getPath()));
+                    checkBoxPreference.setEnabled(!this.mSmbCheckBox.isChecked());
+                    this.mShareCategory.addPreference(checkBoxPreference);
+                }
+            }
+        }
+        this.mSmbUser.setEnabled((this.mSmbCheckBox.isChecked() || z2) ? false : true);
+        Preference preference = this.mSmbPassword;
+        if (!this.mSmbCheckBox.isChecked() && !z2) {
+            z = true;
+        }
+        preference.setEnabled(z);
+        this.mSmbWorkgroup.setEnabled(!this.mSmbCheckBox.isChecked());
+        this.mSmbNbName.setEnabled(!this.mSmbCheckBox.isChecked());
+        this.mSmbOpen.setEnabled(!this.mSmbCheckBox.isChecked());
+        this.mSmbShareInternal.setEnabled(!this.mSmbCheckBox.isChecked());
+        this.mSmbShareRoot.setEnabled(true ^ this.mSmbCheckBox.isChecked());
+    }
+
+    @Override // com.android.settingslib.core.instrumentation.Instrumentable
+    public int getMetricsCategory() {
+        return 1;
+    }
+
+    @Override // com.android.tv.settings.SettingsPreferenceFragment, android.support.v14.preference.PreferenceFragment, android.app.Fragment
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+    }
+
+    @Override // android.support.v14.preference.PreferenceFragment
+    public void onCreatePreferences(Bundle bundle, String str) {
+        this.mContext = getPreferenceManager().getContext();
+        setPreferencesFromResource(com.android.tv.settings.R.xml.samba_settings, null);
+        this.mShareCategory = (PreferenceCategory) findPreference("category_samba_shares");
+        this.resolver = this.mContext.getContentResolver();
+        this.mSmbManager = (SambaManager) this.mContext.getSystemService("misc_sambaserver");
+        this.mStorageManager = (StorageManager) this.mContext.getSystemService(StorageManager.class);
+        if (this.mSmbManager == null || this.mStorageManager == null) {
+            return;
+        }
+        this.mStorageManager.registerListener(this.mStorageListener);
+        this.mIntentFilter = new IntentFilter("android.ethernet.SAMBA_STATE_CHANGED");
+        updateCheckbox();
+        updateInfo();
+        if (isRooted()) {
+            return;
+        }
+        getPreferenceScreen().removePreference(this.mSmbShareRoot);
+    }
+
+    @Override // com.android.tv.settings.SettingsPreferenceFragment, android.app.Fragment
+    public void onDestroy() {
+        super.onDestroy();
+        this.mContext.unregisterReceiver(this.mReceiver);
+    }
+
+    @Override // com.android.tv.settings.SettingsPreferenceFragment, android.app.Fragment
+    public void onPause() {
+        super.onPause();
+        this.mStorageManager.unregisterListener(this.mStorageListener);
+    }
+
+    @Override // android.support.v14.preference.PreferenceFragment, android.support.v7.preference.PreferenceManager.OnPreferenceTreeClickListener
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference == this.mSmbCheckBox) {
+            if (this.mSmbCheckBox.isChecked()) {
+                this.mSmbManager.updateSambaConfig();
+                this.mSmbManager.startSamba();
+            } else {
+                this.mSmbManager.stopSamba();
+            }
+        } else if (preference == this.mSmbOpen) {
+            boolean isChecked = this.mSmbOpen.isChecked();
+            Settings.System.putInt(this.resolver, "samba_open", isChecked ? 1 : 0);
+            boolean z = false;
+            this.mSmbUser.setEnabled((this.mSmbCheckBox.isChecked() || isChecked) ? false : true);
+            Preference preference2 = this.mSmbPassword;
+            if (!this.mSmbCheckBox.isChecked() && !isChecked) {
+                z = true;
+            }
+            preference2.setEnabled(z);
+            this.mSmbManager.updateSambaConfig();
+        } else if (preference == this.mSmbShareInternal) {
+            Settings.System.putInt(this.resolver, "samba_share_internal", this.mSmbShareInternal.isChecked() ? 1 : 0);
+            this.mSmbManager.updateSambaConfig();
+        } else if (preference == this.mSmbShareRoot) {
+            Settings.System.putInt(this.resolver, "samba_share_root", this.mSmbShareRoot.isChecked() ? 1 : 0);
+            this.mSmbManager.updateSambaConfig();
+        } else if (preference instanceof CheckBoxPreference) {
+            if (((CheckBoxPreference) preference).isChecked()) {
+                this.mSmbManager.addStorage(preference.getSummary().toString(), preference.getTitle().toString());
+            } else {
+                this.mSmbManager.removeStorage(preference.getSummary().toString());
+            }
+            this.mSmbManager.updateSambaConfig();
+        } else if (preference == this.mSmbUser) {
+            Intent intent = new Intent(this.mContext, (Class<?>) SambaSettingsActivity.class);
+            intent.putExtra("samba_id", "3");
+            startActivity(intent);
+        } else if (preference == this.mSmbPassword) {
+            Intent intent2 = new Intent(this.mContext, (Class<?>) SambaSettingsActivity.class);
+            intent2.putExtra("samba_id", "4");
+            startActivity(intent2);
+        } else if (preference == this.mSmbWorkgroup) {
+            Intent intent3 = new Intent(this.mContext, (Class<?>) SambaSettingsActivity.class);
+            intent3.putExtra("samba_id", "1");
+            startActivity(intent3);
+        } else if (preference == this.mSmbNbName) {
+            Intent intent4 = new Intent(this.mContext, (Class<?>) SambaSettingsActivity.class);
+            intent4.putExtra("samba_id", "2");
+            startActivity(intent4);
+        }
+        return super.onPreferenceTreeClick(preference);
+    }
+
+    @Override // com.android.tv.settings.SettingsPreferenceFragment, android.app.Fragment
+    public void onResume() {
+        super.onResume();
+        this.mContext.registerReceiver(this.mReceiver, this.mIntentFilter);
+        if (this.mSmbManager == null) {
+            return;
+        }
+        this.mStorageManager.registerListener(this.mStorageListener);
+        updateCheckbox();
+        updateInfo();
+    }
+}

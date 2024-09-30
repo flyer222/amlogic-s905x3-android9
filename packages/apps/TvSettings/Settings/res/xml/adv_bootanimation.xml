@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/bootanimation_chooser">
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootanimation1"
+        android:key="logo_bootanimation"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootanimation.UserScriptsBootanimation1"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootanimation2"
+        android:key="logo_bootanimation"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootanimation.UserScriptsBootanimation2"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootanimation3"
+        android:key="logo_bootanimation"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootanimation.UserScriptsBootanimation3"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootanimation4"
+        android:key="logo_bootanimation"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootanimation.UserScriptsBootanimation4"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootanimation5"
+        android:key="logo_bootanimation"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootanimation.UserScriptsBootanimation5"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootanimation6"
+        android:key="logo_bootanimation"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootanimation.UserScriptsBootanimation6"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootanimation7"
+        android:key="logo_bootanimation"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootanimation.UserScriptsBootanimation7"/>
+    <Preference
+        android:title="@string/bootanimation_your_chooser"
+        android:summary="@string/bootanimation_your_chooser_summary"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootanimation.UserScriptsBootanimationYour"/>
+    <Preference
+        android:title="@string/user_scripts_disable_all"
+        android:key="logo_bootanimation"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootanimation.UserScriptsBootanimationOff"/>
+    <Preference
+        android:enabled="false"
+        android:title="@string/superuser_settings"/>
+</PreferenceScreen>

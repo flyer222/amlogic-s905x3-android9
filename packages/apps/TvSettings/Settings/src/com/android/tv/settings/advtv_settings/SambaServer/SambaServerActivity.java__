@@ -1,0 +1,26 @@
+package com.android.tv.settings.advtv_settings.SambaServer;
+
+import android.app.Fragment;
+import com.android.tv.settings.BaseSettingsFragment;
+import com.android.tv.settings.TvSettingsActivity;
+
+/* loaded from: classes.dex */
+public class SambaServerActivity extends TvSettingsActivity {
+
+    /* loaded from: classes.dex */
+    public static class SettingsFragment extends BaseSettingsFragment {
+        public static SettingsFragment newInstance() {
+            return new SettingsFragment();
+        }
+
+        @Override // android.support.v17.preference.LeanbackSettingsFragment
+        public void onPreferenceStartInitialScreen() {
+            startPreferenceFragment(SambaServerFragment.newInstance());
+        }
+    }
+
+    @Override // com.android.tv.settings.TvSettingsActivity
+    protected Fragment createSettingsFragment() {
+        return SettingsFragment.newInstance();
+    }
+}

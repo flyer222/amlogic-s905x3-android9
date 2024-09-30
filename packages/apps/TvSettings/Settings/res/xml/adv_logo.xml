@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/logo_chooser">
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_img1"
+        android:key="logo_img"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogo1"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_img2"
+        android:key="logo_img"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogo2"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_img3"
+        android:key="logo_img"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogo3"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_img4"
+        android:key="logo_img"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogo4"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_img5"
+        android:key="logo_img"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogo5"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_img6"
+        android:key="logo_img"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogo6"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_img7"
+        android:key="logo_img"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogo7"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_img8"
+        android:key="logo_img"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogo8"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_img9"
+        android:key="logo_img"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogo9"/>
+    <Preference
+        android:title="@string/user_scripts_disable_all"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.logo.UserScriptsLogoOff"/>
+    <Preference
+        android:enabled="false"
+        android:title="@string/superuser_settings"/>
+</PreferenceScreen>

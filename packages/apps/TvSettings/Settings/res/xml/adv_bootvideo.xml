@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/bootvideo_chooser">
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootvideo8"
+        android:key="logo_bootvideo"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideo8"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootvideo1"
+        android:key="logo_bootvideo"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideo1"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootvideo2"
+        android:key="logo_bootvideo"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideo2"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootvideo3"
+        android:key="logo_bootvideo"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideo3"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootvideo4"
+        android:key="logo_bootvideo"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideo4"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootvideo5"
+        android:key="logo_bootvideo"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideo5"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootvideo6"
+        android:key="logo_bootvideo"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideo6"/>
+    <PreferenceScreen
+        android:layout="@layout/adv_logo_bootvideo7"
+        android:key="logo_bootvideo"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideo7"/>
+    <Preference
+        android:title="@string/bootvideo_your_chooser"
+        android:summary="@string/bootvideo_your_chooser_summary"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideoYour"/>
+    <Preference
+        android:title="@string/user_scripts_disable_all"
+        android:key="logo_bootvideo"
+        android:fragment="com.android.tv.settings.advtv_settings.user_scripts.bootvideo.UserScriptsBootvideoOff"/>
+    <Preference
+        android:enabled="false"
+        android:title="@string/superuser_settings"/>
+</PreferenceScreen>
