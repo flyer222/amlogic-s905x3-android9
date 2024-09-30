@@ -1,0 +1,11 @@
+menu "AMLOGIC DVB COMPAT support"
+
+config AMLOGIC_DVB_COMPAT
+	bool "Amlogic DVB drivers"
+	default N
+	help
+		select it to support amlogic dvb driver.
+		Y: enable
+		N: disable
+		M: build as module
+endmenu
