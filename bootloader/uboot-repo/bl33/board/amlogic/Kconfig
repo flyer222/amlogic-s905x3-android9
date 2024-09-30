@@ -295,6 +295,11 @@ config ODROID_C2
 	bool "Support Hardkernel ODROID-C2 board"
 	default n
 
+config XINGYI_X96_Q1
+         bool "Support X96 Q1 board"
+         default n
+
+
 if GXB_SKT_V1
 source "board/amlogic/gxb_skt_v1/Kconfig"
 endif
@@ -582,4 +587,8 @@ endif
 
 if ODROID_C2
 source "board/hardkernel/odroidc2/Kconfig"
+endif
+
+if XINGYI_X96_Q1
+source "board/amlogic/g12a_x96_q1_v1/Kconfig"
 endif

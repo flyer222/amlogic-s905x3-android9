@@ -58,7 +58,9 @@
  *
  */
 
-ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
+ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {	
+
+#if 1
 {
 	// g12a 4layer 4pcs ddr4 rank01 (1320)(T204)
 	.board_id				= CONFIG_BOARD_ID_MASK,
@@ -291,7 +293,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 	.version				= 1,
 	.dram_rank_config		= CONFIG_DDR0_32BIT_RANK0_CH0,
 	.DramType				= CONFIG_DDR_TYPE_DDR3,
-	.DRAMFreq				= {912, 0, 0, 0},
+	.DRAMFreq				= {792, 0, 0, 0},
 	.ddr_base_addr			= CFG_DDR_BASE_ADDR,
 	.ddr_start_offset		= CFG_DDR_START_OFFSET,
 	//.imem_load_addr			= 0xFFFC0000, //sram
@@ -331,7 +333,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 #if 1
 	.ddr_dmc_remap			= {
 							[0] = ( 5 |  7 << 5 |  8 << 10 |  9 << 15 | 10 << 20 | 11 << 25 ),
-							[1] = ( 12|  0 << 5 |  0 << 10 | 14 << 15 | 15 << 20 | 16 << 25 ),
+							[1] = ( 12| 30 << 5 |  0 << 10 | 14 << 15 | 15 << 20 | 16 << 25 ),
 							[2] = ( 17| 18 << 5 | 19 << 10 | 21 << 15 | 22 << 20 | 23 << 25 ),
 							[3] = ( 24| 25 << 5 | 26 << 10 | 27 << 15 | 28 << 20 | 29 << 25 ),
 							[4] = ( 30| 13 << 5 | 20 << 10 |  6 << 15 |  0 << 20 |  0 << 25 ),
@@ -366,7 +368,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 	.ddr_func				= DDR_FUNC,
 	.magic					= DRAM_CFG_MAGIC,
 	.fast_boot[0]			= 1,
-},
+},	
 {
 	/* g12a skt (u209) lpddr4 */
 	.board_id				= CONFIG_BOARD_ID_MASK,
@@ -513,7 +515,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 	.magic					= DRAM_CFG_MAGIC,
 	.fast_boot[0]			= 1,
 },
-#if 0
+
 {
 	/* lpddr3 */
 	.board_id				= CONFIG_BOARD_ID_MASK,
@@ -574,7 +576,9 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 	.magic					= DRAM_CFG_MAGIC,
 	.diagnose				= CONFIG_DIAGNOSE_DISABLE,
 },
+
 #endif
+
 };
 
 pll_set_t __pll_setting = {
