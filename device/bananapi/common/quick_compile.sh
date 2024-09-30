@@ -18,6 +18,7 @@ project[2]="m5_tablet"    ;soc[2]="S905X3"        ;hardware[2]="BANANAPI_M5"    
 project[3]="x2_m401a"    ;soc[3]="S905X2"        ;hardware[3]="flyer_x2"     ;module[3]="x2_m401a"         ;uboot[3]="g12a_u212_v1"           ;tdk[3]="g12a/bl32.img"
 project[4]="x2_m401a_atv"    ;soc[4]="S905X2"        ;hardware[4]="flyer_x2"     ;module[4]="x2_m401a_atv"         ;uboot[4]="g12a_u212_v1"           ;tdk[4]="g12a/bl32.img"
 project[5]="x2_e900v22c"    ;soc[5]="S905X2"        ;hardware[5]="flyer_x2"     ;module[5]="x2_e900v22c"         ;uboot[5]="g12a_u212_v1"           ;tdk[5]="g12a/bl32.img"
+project[6]="x3_x96q5"    ;soc[6]="S905X3"        ;hardware[6]="flyer_x96q5"     ;module[6]="x3_x96q5"         ;uboot[6]="g12a_x96_q1_v1"           ;tdk[6]="g12a/bl32.img"
 platform_avb_param=""
 platform_type=1
 project_path="null"
