@@ -28,9 +28,13 @@ public class SdrManager {
     private static final String TAG                 = "SdrManager";
 
     private static final String KEY_SDR_MODE        = "persist.vendor.sys.sdr.state";
+    private static final String CUR_HDR_SUPPORT     = "/sys/module/am_vecm/parameters/cur_hdr_support";
 
     public static final int MODE_OFF = 0;
     public static final int MODE_AUTO = 2;
+
+    public static final int HDR_POLICY_HDR_ON = 0;
+    public static final int HDR_POLICY_HDR_OFF = 1;
 
     private Context mContext;
     private SystemControlManager mSystemControl;
@@ -52,5 +56,10 @@ public class SdrManager {
         } else {
             mSystemControl.setSdrMode(String.valueOf(MODE_OFF));
         }
+    }
+
+    public boolean isHdrSupport() {
+        int isHdrSupport = Integer.parseInt(mSystemControl.readSysFs(CUR_HDR_SUPPORT));
+        return isHdrSupport != 0;
     }
 }

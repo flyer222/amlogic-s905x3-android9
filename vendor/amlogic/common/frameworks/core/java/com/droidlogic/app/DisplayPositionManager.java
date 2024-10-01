@@ -115,7 +115,7 @@ public class DisplayPositionManager {
     private void writeFile(String file, String value) {
         mSystenControl.writeSysFs(file, value);
     }
-
+/*
     private void initStep(String mode) {
         if (mode.contains(OutputModeManager.HDMI_480)) {
             mMaxRight = 719;
@@ -140,7 +140,60 @@ public class DisplayPositionManager {
             mMaxBottom = 1079;
         }
     }
+*/
 
+    private void initStep(String mode) {
+        String prop = mSystenControl.getPropertyString("vendor.display-size", "1920x1080");
+        Log.e(TAG, "initStep " + prop);
+        String[] resolutions = prop.split("x");
+        mMaxRight = Integer.parseInt(resolutions[0]) - 1;
+        mMaxBottom = Integer.parseInt(resolutions[1]) - 1;
+        Log.e(TAG, "mMaxRight = " + mMaxRight + ", mMaxBottom = " + mMaxBottom);
+        /*
+        if (mode.contains(OutputModeManager.HDMI_480)) {
+            mMaxRight = 719;
+            mMaxBottom = 479;
+        }else if (mode.contains(OutputModeManager.HDMI_576)) {
+            mMaxRight = 719;
+            mMaxBottom = 575;
+        }else if (mode.contains(OutputModeManager.HDMI_720)) {
+            mMaxRight = 1279;
+            mMaxBottom = 719;
+        }else if (mode.contains(OutputModeManager.HDMI_1080)) {
+            mMaxRight = 1919;
+            mMaxBottom = 1079;
+        }else if (mode.contains(OutputModeManager.HDMI_4K2K)) {
+            mMaxRight = 3839;
+            mMaxBottom = 2159;
+        } else if (mode.contains(OutputModeManager.HDMI_SMPTE)) {
+            mMaxRight = 4095;
+            mMaxBottom = 2159;
+        } else {
+            mMaxRight = 1919;
+            mMaxBottom = 1079;
+        }
+        */
+    }
+
+    public void alignBy(int leftMargin, int topMargin, int rightMargin, int bottomMarg) {
+        int leftAlign, topAlign, rightAlign, bottomAlign;
+
+        mCurrentMode = mOutputModeManager.getCurrentOutputMode();
+        initStep(mCurrentMode);
+        leftAlign = mCurrentLeft + leftMargin;
+        topAlign = mCurrentTop + topMargin;
+        rightAlign = mMaxRight - rightMargin;
+        bottomAlign = mMaxBottom - bottomMarg;
+
+        int width = rightAlign - leftAlign + 1;
+        int height = bottomAlign - topAlign + 1;
+
+        if (leftAlign < 0) leftAlign = 0;
+        if (topAlign < 0) topAlign = 0;
+
+        mOutputModeManager.savePosition(leftAlign, topAlign, width, height);
+        mOutputModeManager.setOsdMouse(leftAlign, topAlign, width, height);
+    }
     public void zoomByPercent(int percent){
 
         if (percent > 100 ) {
