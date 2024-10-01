@@ -18,7 +18,7 @@
 /dts-v1/;
 
 #include "mesong12a.dtsi"
-#include "partition_mbox_normal_P_32.dtsi"
+#include "partition_mbox_normal_P_2.1G_sysetm_32.dtsi"
 
 / {
 	model = "Amlogic flyer222 m401a";
