@@ -584,4 +584,4 @@ ifeq ($(TARGET_BUILD_GOOGLE_ATV),true)
 #$(call inherit-product-if-exists, vendor/xingyi/gms_tv/gms_tv.mk)
 endif
 
-$(call inherit-product-if-exists, vendor/xingyi/prebuild/apk/bt_voice/bt_voice.mk)
+$(call inherit-product-if-exists, vendor/xingyi/devices/$(PRODUCT_NAME).mk)
