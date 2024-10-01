@@ -1,17 +1,3 @@
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/custom_ir.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/ds3231.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/hifi_pcm5102a.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/pwm_ab.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/pwm_b-backlight.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/pwm_c-beeper.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/pwm_cd-c.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/pwm_cd.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/pwm_ef-f.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/pwm_ef.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/spi0.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/waveshare_tft24_lcd.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/waveshare_tft35c_lcd.dts
-/common/arch/arm/boot/dts/amlogic/overlay/bananapi_m5/waveshare_tft35c_rtp.dts
 /hardware/wifi/realtek/drivers/8192eu/rtl8192EU-back/
 /hardware/wifi/realtek/drivers/8812au/rtl8812AU-back/
 /out/
@@ -27,4 +13,9 @@
 /vendor/bananapi/
 /vendor/google/
 /vendor/opengapps/
+/bootloader/
+/common/
+/frameworks/base/
+/packages/apps/TvSettings/
+/vendor/xingyi/
 /vim3_lcd_exist_detect.patch
