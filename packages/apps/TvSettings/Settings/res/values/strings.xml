@@ -36,8 +36,6 @@
     <string name="header_category_quick_settings">Quick Settings</string>
     <!-- Header title for general settings [CHAR LIMIT=50] -->
     <string name="header_category_general_settings">General Settings</string>
-	
-	<string name="header_category_adv_settings">Advance Tv Settings</string>
     <!-- The talkback message for dismissing suggestion -->
     <string name="dismiss_suggestion">Dismiss the suggestion</string>
 
@@ -1657,96 +1655,8 @@
 	
 	
 	
-	<string name="device_hdr">HDR to SDR</string>
-    <string name="device_sdr">SDR to HDR</string>
-	<string name="dolby_vision">Dolby Vision</string>
-    <string name="dolby_vision_set">Dolby Vision Set</string>
-    <string name="dolby_vision_tv">TV Dolby Vision</string>
-    <string name="dolby_vision_tv_set">TV Dolby Vision Set</string>
-    <string name="dolby_vision_default_enable">Dolby vision enable</string>
-    <string name="dolby_vision_low_latency_yuv">Dolby vision enable with low latency (YUV)</string>
-    <string name="dolby_vision_low_latency_rgb">Dolby vision enable with low latency (RGB)</string>
-    <string name="dolby_vision_off">Dolby vision disable</string>
-    <string name="dolby_vision_graphics_priority">Dolby Vision Graphics Priority</string>
-    <string name="graphics_priority">Graphics Priority</string>
-    <string name="video_priority">Video Priority</string>
-
-
-	<string name="device_sound_digital_auto">Auto detection</string>
-    <string name="device_sound_digital_auto_off">OFF</string>
-    <string name="device_sound_digital_pcm">PCM</string>
-    <string name="device_sound_digital_hdmi">HDMI</string>
-    <string name="device_sound_digital_spdif">SPDIF</string>
-    <string name="device_sound_dts">DTS Sounds</string>
-    <string name="device_sound_dts_downmix">DTS Downmix</string>
-    <string name="device_sound_dts_downmix_o">Lo/Ro</string>
-    <string name="device_sound_dts_downmix_t">Lt/Rt</string>
-    <string name="device_sound_dts_dialnorm">DTS Dialnorm</string>
-    <string name="device_sound_dts_trans">DTS Transcoder</string>
-    <string name="device_sound_dts_trans_auto">Auto</string>
-    <string name="device_sound_dts_trans_51pcm">5.1 PCM Transcoder</string>
-    <string name="device_sound_dts_trans_71pcm">7.1 PCM Transcoder</string>
-    <string name="device_sound_dts_mulasset">DTS Mulasset</string>
-    <string name="device_sound_dolby_drcmode">DRC mode</string>
-    <string name="device_sound_dolby_drcoff">OFF</string>
-    <string name="device_sound_dolby_drcline">LINE</string>
-    <string name="device_sound_dolby_drcrf">RF</string>
+	
+	<string name="header_category_adv_settings">Advance Tv Settings</string>
 	
 	
-	<string name="device_outputmode">Screen resolution</string>
-	<string name="device_displaymode">Display Mode</string>
-	<string name="device_color">Color</string>
-    <string name="device_colorattribute">Format and Depth</string>
-    <string name="device_outputmode_color_space">Color Space Settings</string>
-    <string name="device_outputmode_color_depth">Color Depth Settings</string>
-    <string name="device_outputmode_auto">Auto switch to best resolution</string>
-    <string name="device_outputmode_deepcolor">deep color mode</string>
-    <string name="device_outputmode_confirm_mode">Confirm turn off deep color mode</string>
-    <string name="device_outputmode_confirm_deepcolor">Confirm turn on deep color mode</string>
-    <string name="device_outputmode_change">Reboot to change mode:</string>
-    <string name="device_colorattribute_change">Confirm change to color:</string>
-    <string name="device_countdown"> seconds later dismiss</string>
-    <string name="device_position">Screen position</string>
-    <string name="device_position_zoomout">Zoom out screen</string>
-    <string name="device_position_zoomin">Zoom in screen</string>
-    <string name="device_position_description">current scaling is</string> 
-	
-	<string name="show_all_resolution">Support Resolution</string>
-	<string name="autoframerate">AUTO FRAMERATE</string>
-	
-	<string name="pq_custom">Custom Settings</string>
-    <string name="pq_brightness">Brightness</string>
-    <string name="pq_contrast">Contrast</string>
-    <string name="pq_saturation">Saturation</string>
-    <string name="pq_sharpness">Sharpness</string>
-    <string name="pq_hue">Hue</string>
-
-<string name="interface_title">Interface</string>
-    <string name="screen_density">Display size</string>
-    <string name="screen_density_120">120</string>
-    <string name="screen_density_160">160</string>
-    <string name="screen_density_200">200</string>
-    <string name="screen_density_240">240</string>
-    <string name="screen_density_280">280</string>
-	<string name="screen_density_300">300</string>
-    <string name="screen_density_320">320</string>
-
-<string name="accessibility_toggle_large_pointer_icon_title">Large mouse pointer</string>
-<string name="pointer_speed">Pointer speed</string>
-<string name="mouse_touch_input_title">Mouse as touch input</string>
-<string name="mouse_touch_input_summary">Allows to play some games that require touch input only</string>
- <string name="system_mouse">Mouse</string>
- <string name="adv_settings_root">ROOT</string>
-
- <string name="logo_chooser">Logo</string>
- <string name="user_scripts_activation">Install</string>
- <string name="user_scripts_disable_all">Disable all</string>
- <string name="superuser_settings">Superuser rights required</string>
-
- <string name="bootanimation_chooser">Bootanimation</string>
-    <string name="bootvideo_your_chooser">Installing your Bootvideo</string>
-    <string name="bootvideo_your_chooser_summary">Copy your MP4 video to the tv_script folder on the internal memory</string>
-    <string name="bootanimation_your_chooser">Installing your Bootanimation</string>
-    <string name="bootanimation_your_chooser_summary">Copy bootanimation.zip to the tv_script folder on the internal memory</string>
- <string name="bootvideo_chooser">Bootvideo</string>   
 </resources>

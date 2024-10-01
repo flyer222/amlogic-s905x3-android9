@@ -259,7 +259,6 @@ public class DevelopmentFragment extends SettingsPreferenceFragment
             mPendingDialogKey = icicle.getString(STATE_SHOWING_DIALOG_KEY);
         }
 
-	    Log.e(TAG,"zbs 0, eroror devlelopment");
         mWindowManager = IWindowManager.Stub.asInterface(ServiceManager.getService("window"));
         mBackupManager = IBackupManager.Stub.asInterface(
                 ServiceManager.getService(Context.BACKUP_SERVICE));
@@ -284,13 +283,10 @@ public class DevelopmentFragment extends SettingsPreferenceFragment
                 Settings.Global.DEVICE_PROVISIONED, 0) == 0) {
             // Block access to developer options if the user is not the owner, if user policy
             // restricts it, or if the device has not been provisioned
-            //mUnavailable = true;
-            //addPreferencesFromResource(R.xml.development_prefs_not_available);
-            //return;
-	    Log.e(TAG,"zbs, eroror devlelopment");
+            mUnavailable = true;
+            addPreferencesFromResource(R.xml.development_prefs_not_available);
+            return;
         }
-            mUnavailable = false;
-	    Log.e(TAG,"zbs,22 eroror devlelopment");
 
         addPreferencesFromResource(R.xml.development_prefs);
         final PreferenceScreen preferenceScreen = getPreferenceScreen();

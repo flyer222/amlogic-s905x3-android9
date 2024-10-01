@@ -52,8 +52,7 @@
         android:usesCleartextTraffic="true"
         android:defaultToDeviceProtectedStorage="true"
         android:directBootAware="true">
-	
-        <uses-library android:name="droidlogic.software.core" />
+
         <activity
             android:name=".MainSettings"
             android:excludeFromRecents="true"

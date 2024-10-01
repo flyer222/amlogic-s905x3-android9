@@ -36,8 +36,6 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 LOCAL_STATIC_JAVA_LIBRARIES := \
     android-arch-lifecycle-common-java8
 
-LOCAL_JAVA_LIBRARIES := droidlogic droidlogic-tv
-
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
 
 LOCAL_USE_AAPT2 := true
