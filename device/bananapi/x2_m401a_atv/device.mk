@@ -101,8 +101,11 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_CHARACTERISTICS := mbx,nosdcard
 
 ifneq ($(TARGET_BUILD_GOOGLE_ATV), true)
+PRODUCT_CHARACTERISTICS := mbx,nosdcard
 DEVICE_PACKAGE_OVERLAYS := \
     device/bananapi/$(PRODUCT_DIR)/overlay
+else
+PRODUCT_CHARACTERISTICS := tv
 endif
 PRODUCT_TAGS += dalvik.gc.type-precise
 

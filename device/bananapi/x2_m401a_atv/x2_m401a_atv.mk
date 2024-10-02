@@ -78,6 +78,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.hdmi.set_menu_language=true \
         persist.sys.hdmi.keep_awake=false
 
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.timezone=Asia/Shanghai
+
 PRODUCT_NAME := x2_m401a_atv
 PRODUCT_DEVICE := x2_m401a_atv
 PRODUCT_BRAND := XingYi_x2
@@ -545,7 +547,8 @@ include device/bananapi/$(PRODUCT_DIR)/xingyi.mk
 PRODUCT_PACKAGES += \
 	LeanKeyKeyboardPro  \
 	TvSettings  \
-	DangBeiLauncher_simple
+	DangBeiLauncher \
+	RemoteIME
 #########################################################################
 #
 #                            factory test

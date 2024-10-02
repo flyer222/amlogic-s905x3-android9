@@ -1,4 +1,4 @@
 PRODUCT_PACKAGES += \
 		 TvBox \
-		 HunanOTT-STD \
-		 OKVideo
+		 OKVideo \
+		 yecao-assi
