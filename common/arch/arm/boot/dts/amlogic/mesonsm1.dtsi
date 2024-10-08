@@ -476,7 +476,7 @@
 		store_device = "data";
 	};
 
-	jtag {
+	jtag:jtag {
 		compatible = "amlogic, jtag";
 		status = "okay";
 		select = "disable"; /* disable/apao/apee */

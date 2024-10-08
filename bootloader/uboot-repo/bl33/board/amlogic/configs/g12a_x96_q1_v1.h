@@ -19,8 +19,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef __G12A_U212_V1_H__
-#define __G12A_U212_V1_H__
+#ifndef __G12A_X96_Q1_V1_H__
+#define __G12A_X96_Q1_V1_H__
 
 #include <asm/arch/cpu.h>
 
@@ -542,6 +542,8 @@
 #define CONFIG_AML_MINUI 1
 #define CONFIG_OSD_SCALE_ENABLE 1
 #define CONFIG_CMD_BMP 1
+
+#define CONFIG_CMD_BDI 1
 
 #if defined(CONFIG_AML_VOUT)
 #define CONFIG_AML_CVBS 1
