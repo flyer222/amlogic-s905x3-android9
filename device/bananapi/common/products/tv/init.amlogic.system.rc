@@ -444,7 +444,17 @@ on property:ro.debuggable=1
     write /sys/module/kgdboc/parameters/kgdboc ttyFIQ2
     write /sys/module/fiq_debugger/parameters/kgdb_enable 1
 
-service remotecfg /vendor/bin/remotecfg /vendor/etc/remote.conf
+service remotecfg  /vendor/bin/remotecfg -c /vendor/etc/remote.cfg -t /vendor/etc/remote.tab -d
+    class main
+    oneshot
+    seclabel u:r:remotecfg:s0
+
+service remotecfg1 /vendor/bin/remotecfg -c /vendor/etc/remote.cfg -t /vendor/etc/remote.tab1 -d
+    class main
+    oneshot
+    seclabel u:r:remotecfg:s0
+
+service remotecfg2 /vendor/bin/remotecfg -c /vendor/etc/remote.cfg -t /vendor/etc/remote.tab2 -d
     class main
     oneshot
     seclabel u:r:remotecfg:s0

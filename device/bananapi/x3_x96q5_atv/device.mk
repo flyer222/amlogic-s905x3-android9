@@ -45,6 +45,8 @@ PRODUCT_COPY_FILES += \
     device/bananapi/$(PRODUCT_DIR)/files/mesondisplay.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/mesondisplay.cfg \
     device/bananapi/$(PRODUCT_DIR)/files/remote.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/remote.cfg \
     device/bananapi/$(PRODUCT_DIR)/files/remote.tab:$(TARGET_COPY_OUT_VENDOR)/etc/remote.tab \
+    device/bananapi/$(PRODUCT_DIR)/files/remote.tab1:$(TARGET_COPY_OUT_VENDOR)/etc/remote.tab1 \
+    device/bananapi/$(PRODUCT_DIR)/files/remote.tab2:$(TARGET_COPY_OUT_VENDOR)/etc/remote.tab2 \
     device/bananapi/$(PRODUCT_DIR)/files/PQ/pq.db:$(TARGET_COPY_OUT_VENDOR)/etc/tvconfig/pq/pq.db \
     device/bananapi/$(PRODUCT_DIR)/files/PQ/pq_default.ini:$(TARGET_COPY_OUT_VENDOR)/etc/tvconfig/pq/pq_default.ini
 
@@ -78,6 +80,8 @@ PRODUCT_COPY_FILES += \
     device/bananapi/$(PRODUCT_DIR)/recovery/remotecfg:recovery/root/sbin/remotecfg \
     device/bananapi/$(PRODUCT_DIR)/files/remote.cfg:recovery/root/etc/remote.cfg \
     device/bananapi/$(PRODUCT_DIR)/files/remote.tab:recovery/root/etc/remote.tab \
+    device/bananapi/$(PRODUCT_DIR)/files/remote.tab1:recovery/root/etc/remote.tab1 \
+    device/bananapi/$(PRODUCT_DIR)/files/remote.tab2:recovery/root/etc/remote.tab2 \
     device/bananapi/common/recovery/resize2fs:recovery/root/sbin/resize2fs \
     device/bananapi/$(PRODUCT_DIR)/recovery/sh:recovery/root/sbin/sh \
     device/bananapi/$(PRODUCT_DIR)/files/opengapp.sh:recovery/root/sbin/opengapp.sh 
