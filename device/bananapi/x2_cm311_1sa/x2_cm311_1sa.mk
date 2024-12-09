@@ -541,7 +541,6 @@ endif
 #                            apps
 #
 #########################################################################
-include device/bananapi/$(PRODUCT_DIR)/xingyi.mk
 PRODUCT_PACKAGES += \
 	LeanKeyKeyboardPro  \
 	TvSettings  \
@@ -585,4 +584,4 @@ ifeq ($(TARGET_BUILD_GOOGLE_ATV),true)
 #$(call inherit-product-if-exists, vendor/xingyi/gms_tv/gms_tv.mk)
 endif
 
-$(call inherit-product-if-exists, vendor/xingyi/devices/$(PRODUCT_NAME).mk)
+-include vendor/xingyi/devices/x2_cm311_1sa.mk
