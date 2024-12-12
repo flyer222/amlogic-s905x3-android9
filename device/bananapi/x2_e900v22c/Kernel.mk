@@ -56,6 +56,7 @@ else
 -include device/bananapi/common/tb_modules.mk
 -include device/bananapi/common/npu_modules.mk
 -include device/bananapi/common/tuner/tuner_modules.mk
+-include vendor/xingyi/kernel_modules/xingyi_ker_modules.mk
 #KERNEL_DEVICETREE := sm1_s905x3_bananapi_m5 sm1_s905x3_bananapi_m2_pro
 #KERNEL_DEFCONFIG := meson64_defconfig
 KERNEL_DEVICETREE := g12a_s905x2_e900v22c
@@ -98,6 +99,7 @@ TARGET_AMLOGIC_INT_RECOVERY_KERNEL := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/Ima
 BOARD_VENDOR_KERNEL_MODULES += $(DEFAULT_MEDIA_KERNEL_MODULES)
 BOARD_VENDOR_KERNEL_MODULES += $(DEFAULT_WIFI_KERNEL_MODULES)
 BOARD_VENDOR_KERNEL_MODULES += $(DEFAULT_TB_DETECT_KERNEL_MODULES)
+BOARD_VENDOR_KERNEL_MODULES += $(DEFAULT_XINGYI_KERNEL_MODULES)
 BOARD_VENDOR_KERNEL_MODULES += $(PRODUCT_OUT)/obj/lib_vendor/galcore.ko
 WIFI_OUT  := $(TARGET_OUT_INTERMEDIATES)/hardware/wifi
 
@@ -134,6 +136,7 @@ endif
 	$(cp-modules)
 	$(media-modules)
 	$(npu-modules)
+	$(kara_ker_modules)
 	mkdir -p $(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR)/lib/modules/
 	cp $(KERNEL_KO_OUT)/* $(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR)/lib/modules/
 
